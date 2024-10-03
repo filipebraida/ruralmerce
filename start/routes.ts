@@ -7,10 +7,22 @@
 |
 */
 
+import Product from '#models/product'
 import router from '@adonisjs/core/services/router'
 
 const UsersController = () => import('#controllers/users_controller')
 const ProductsController = () => import('#controllers/products_controller')
+
+router.get('/', async ({ view }) => {
+  const products = [{ name: 'Roedor' }, { name: 'Biscoito' }]
+  console.log(products)
+  return view.render('pages/home', { email: 'filipebraida@gmail.com', products: products })
+})
+
+router.post('/login', ({ request }) => {
+  console.log(request.all())
+  return 'FIZ LOGIN'
+})
 
 router
   .group(() => {
