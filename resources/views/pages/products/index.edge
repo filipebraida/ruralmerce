@@ -1,28 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Aula de HTML</title>
-  </head>
-  <body>
-    <nav>
-      <a>Produtos</a>
-      <a>{{ email }}</a>
-    </nav>
-    <main>
-      <div>
-        Lista de Produtos
-      </div>
-      <div>
-        <div>Produtos</div>
-        <ul>
-          @each(product in products)
-            <li>
-              <a href="{{`/products/${product.id}`}}">{{product.name}}</a>
-              - {{ product.price }}
-            </li>
-          @end
-        </ul>
-      </div>
-    </main>
-  </body>
-</html>
+@layouts.app()
+  <main>
+    <div>
+      <div>Produtos</div>
+      <ul>
+        @each(product in products)
+          <li>
+            <a href="{{ route('products.show', { id: product.id }) }}">
+              {{product.name}}
+            </a>
+            - {{ product.price }}
+          </li>
+        @end
+      </ul>
+    </div>
+  </main>
+@end

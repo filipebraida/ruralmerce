@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Aula de HTML</title>
+  </head>
+  <body>
+    @include('components/layouts/partials/header')
+
+    {{{ await $slots.main() }}}
+  </body>
+</html>

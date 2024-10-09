@@ -26,12 +26,16 @@ export default class ProductsController {
     return view.render('pages/products/show', { product })
   }
 
-  async store({ request }: HttpContext) {
+  async store({ request, response }: HttpContext) {
     const payload = request.only(['name', 'price', 'description'])
 
     const product = await Product.create(payload)
 
-    return product
+    return response.redirect().toRoute('products.show', { id: product.id })
+  }
+
+  async create({ view }: HttpContext) {
+    return view.render('pages/products/create')
   }
 
   async patch({ params, request}: HttpContext) {

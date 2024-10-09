@@ -34,6 +34,7 @@ router
   .as('users')
 
 router.get('/products', [ProductsController, 'index']).as('products.index')
+router.get('/products/new', [ProductsController, 'create']).as('products.create')
 router.get('/products/:id', [ProductsController, 'show']).as('products.show')
 router.post('/products', [ProductsController, 'store']).as('products.store')
 router.delete('/products/:id', [ProductsController, 'destroy']).as('products.destroy')

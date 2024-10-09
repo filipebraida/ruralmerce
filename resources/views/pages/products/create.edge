@@ -1,0 +1,39 @@
+@layouts.app()
+  @form({ action: route('products.store') })
+    <div>
+      <label for="name">
+        Nome do Produto
+      </label>
+      @!input({
+        name: 'name',
+        type: 'text'
+      })
+    </div>
+
+    <div>
+      <label for="pricer">
+        Preço
+      </label>
+      @!input({
+        name: 'price',
+        type: 'text'
+      })
+    </div>
+
+    <div>
+      <label for="description">
+        Descrição
+      </label>
+      @!input({
+        name: 'description',
+        type: 'text'
+      })
+    </div>
+
+    @button({
+      type: 'submit'
+    })
+      Salvar
+    @end
+  @end
+@end

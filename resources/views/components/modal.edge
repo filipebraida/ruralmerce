@@ -1,0 +1,18 @@
+<div>
+  <div>
+    {{{ await $slots.header() }}}
+  </div>
+
+  <div>
+    {{{ await $slots.main() }}}
+  </div>
+
+  @if($slots.footer)
+  <div>
+    {{{ await $slots.footer() }}}
+  </div>
+  @else
+    PADRAO
+  @end
+
+</div>
