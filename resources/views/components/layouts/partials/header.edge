@@ -1,5 +1,9 @@
-<nav>
-  <a href="{{ route('products.index') }}">Produtos</a>
-  <a href="{{ route('products.create') }}">Criar Produto</a>
-
+<nav class="flex justify-between mx-10">
+  <div class="flex gap-4">
+    <a href="{{ route('products.index') }}">Produtos</a>
+    <a href="{{ route('products.create') }}">Criar Produto</a>
+  </div>
+  <div class="flex items-center">
+    <p>usuario</p>
+  </div>
 </nav>

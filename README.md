@@ -37,4 +37,4 @@ npm run dev
 
 ### Videos sobre Programação para Web
 
-Ementa do curso e material sobre programação para Web: http://filipe.braida.com.br/pages/courses/web/
+Ementa do curso e material sobre programação para Web: https://filipe.braida.com.br/course/web/
