@@ -61,11 +61,16 @@
     "@adonisjs/shield": "^8.1.1",
     "@adonisjs/static": "^1.1.1",
     "@adonisjs/vite": "^3.0.0",
+    "@iconify-json/heroicons": "^1.2.1",
     "@vinejs/vine": "^2.1.0",
     "better-sqlite3": "^11.3.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "edge-iconify": "^2.0.1",
     "edge.js": "^6.2.0",
     "luxon": "^3.5.0",
-    "reflect-metadata": "^0.2.2"
+    "reflect-metadata": "^0.2.2",
+    "tailwind-merge": "^2.5.4"
   },
   "hotHook": {
     "boundaries": [

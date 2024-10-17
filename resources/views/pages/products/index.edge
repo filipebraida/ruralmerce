@@ -1,16 +1,11 @@
 @layouts.app()
   <main>
     <div>
-      <div>Produtos</div>
+      <div>Produtos
+        @svg('heroicons:arrow-left-solid', { class: 'w-6 h-6 text-red-500' })
+      </div>
       <ul>
-        @each(product in products)
-          <li>
-            <a href="{{ route('products.show', { id: product.id }) }}">
-              {{product.name}}
-            </a>
-            - {{ product.price }}
-          </li>
-        @end
+        @include('pages/products/partials/products')
       </ul>
     </div>
   </main>

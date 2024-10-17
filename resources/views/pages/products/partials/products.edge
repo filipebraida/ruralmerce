@@ -1,0 +1,8 @@
+  @each(product in products)
+    <li>
+      <a href="{{ route('products.show', { id: product.id }) }}">
+        {{product.name}}
+      </a>
+      - {{ product.price }}
+    </li>
+  @end
