@@ -7,7 +7,7 @@
 |
 */
 
-import Product from '#models/product'
+const CategoryController = () => import('#controllers/categories_controller')
 import router from '@adonisjs/core/services/router'
 
 const UsersController = () => import('#controllers/users_controller')
@@ -39,3 +39,5 @@ router.get('/products/:id', [ProductsController, 'show']).as('products.show')
 router.post('/products', [ProductsController, 'store']).as('products.store')
 router.delete('/products/:id', [ProductsController, 'destroy']).as('products.destroy')
 router.patch('/products/:id', [ProductsController, 'patch']).as('products.patch')
+
+router.get('/categories/:id', [CategoryController, 'show']).as('categories.show')

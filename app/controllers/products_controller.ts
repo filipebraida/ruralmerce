@@ -1,6 +1,7 @@
 import { HttpContext } from "@adonisjs/core/http"
 
 import Product from "#models/product"
+import Category from "#models/category"
 
 export default class ProductsController {
   async index({ view, request }: HttpContext) {
@@ -22,12 +23,13 @@ export default class ProductsController {
 
   async show({ view, params }: HttpContext) {
     const product = await Product.findOrFail(params.id)
+    await product.load('category')
 
     return view.render('pages/products/show', { product })
   }
 
   async store({ request, response }: HttpContext) {
-    const payload = request.only(['name', 'price', 'description'])
+    const payload = request.only(['name', 'price', 'description', 'categoryId'])
 
     const product = await Product.create(payload)
 
@@ -35,13 +37,14 @@ export default class ProductsController {
   }
 
   async create({ view }: HttpContext) {
-    return view.render('pages/products/create')
+    const categories = await Category.all()
+    return view.render('pages/products/create', { categories })
   }
 
   async patch({ params, request}: HttpContext) {
     const product = await Product.findOrFail(params.id)
 
-    const payload = await request.only(['name', 'price', 'description'])
+    const payload = request.only(['name', 'price', 'description', 'categoryId'])
     product.merge(payload)
 
     await product.save()
