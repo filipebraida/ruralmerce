@@ -1,0 +1,69 @@
+@layouts.app()
+  <div class="flex min-h-[80vh] flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div class="text-center sm:mx-auto sm:w-full sm:max-w-md">
+      <h1 class="text-3xl font-bold text-gray-900">
+        Criar Usuário
+      </h1>
+    </div>
+    <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+      <div class="bg-white px-4 pb-4 pt-8 sm:rounded-lg sm:px-10 sm:pb-6">
+        @form({
+          action: route('users.store'),
+          method: 'POST',
+          class: 'space-y-6',
+        })
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">
+              Email
+            </label>
+            <div class="mt-1">
+              @!input({
+                type: 'email',
+                name: 'email',
+                required: true,
+              })
+            </div>
+          </div>
+          <div>
+            <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
+            <div class="mt-1">
+              @!input({
+                type: 'password',
+                name: 'password',
+                required: true,
+              })
+            </div>
+          </div>
+          <div>
+            <label for="password_confirm" class="block text-sm font-medium text-gray-700">Confirme a Senha</label>
+            <div class="mt-1">
+              @!input({
+                type: 'password',
+                name: 'password_confirm',
+                required: true,
+              })
+            </div>
+          </div>
+          <div>
+            @button({
+              type: 'submit',
+              class: 'w-full',
+            })
+              Criar
+            @end
+          </div>
+        @end
+        <div class="m-auto mt-6 w-fit md:mt-8">
+          <span class="m-auto">
+            Já possui conta?
+            <a
+              class="font-semibold"
+              href="{{ route('auth.create') }}">
+              Login
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+@end

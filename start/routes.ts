@@ -6,32 +6,21 @@
 | The routes file is used for defining the HTTP routes.
 |
 */
-
-const CategoryController = () => import('#controllers/categories_controller')
 import router from '@adonisjs/core/services/router'
 
+const CategoryController = () => import('#controllers/categories_controller')
 const UsersController = () => import('#controllers/users_controller')
 const ProductsController = () => import('#controllers/products_controller')
+const AuthController = () => import('#controllers/auth_controller')
 
-router.get('/', async ({ view }) => {
-  const products = [{ name: 'Roedor' }, { name: 'Biscoito' }]
-  console.log(products)
-  return view.render('pages/home', { email: 'filipebraida@gmail.com', products: products })
-})
+router.on('/').render('pages/home/show').as('home.show')
 
-router.post('/login', ({ request }) => {
-  console.log(request.all())
-  return 'FIZ LOGIN'
-})
+router.get('/login', [AuthController, 'create']).as('auth.create')
+router.post('/login', [AuthController, 'store']).as('auth.store')
+router.get('/logout', [AuthController, 'destroy']).as('auth.destroy')
 
-router
-  .group(() => {
-    router.get('/', [UsersController, 'index']).as('lista')
-    router.get('/:id', [UsersController, 'show']).where('id', router.matchers.number()).as('show')
-    router.post('/', [UsersController, 'create']).as('create')
-  })
-  .prefix('users')
-  .as('users')
+router.get('/user', [UsersController, 'create']).as('users.create')
+router.post('/user', [UsersController, 'store']).as('users.store')
 
 router.get('/products', [ProductsController, 'index']).as('products.index')
 router.get('/products/new', [ProductsController, 'create']).as('products.create')
