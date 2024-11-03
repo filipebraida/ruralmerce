@@ -1,6 +1,12 @@
 @let(className = 'block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm')
-
 <input
   class="{{ cn(className, $props.class ?? '') }}"
-  {{ $props.except(['class']).toAttrs() }}
+  {{ $props.except(['class', 'value']).toAttrs() }}
+  value="{{flashMessages.get(name) ? flashMessages.get(name) : value || '' }}"
   />
+
+@flashMessage(`errors.${name}`)
+  <p class="text-sm text-red-500">
+    {{ $message }}
+  </p>
+@end

@@ -2,6 +2,7 @@ import { HttpContext } from "@adonisjs/core/http"
 
 import Product from "#models/product"
 import Category from "#models/category"
+import { createProductValidator } from "#validators/product"
 
 export default class ProductsController {
   async index({ view, request }: HttpContext) {
@@ -29,7 +30,7 @@ export default class ProductsController {
   }
 
   async store({ request, response }: HttpContext) {
-    const payload = request.only(['name', 'price', 'description', 'categoryId'])
+    const payload = await request.validateUsing(createProductValidator)
 
     const product = await Product.create(payload)
 

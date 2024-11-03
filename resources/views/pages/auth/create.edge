@@ -59,6 +59,11 @@
             })
               Login
             @end
+            @flashMessage('errors.login')
+              <p class="text-sm text-red-500">
+                {{ $message }}
+              </p>
+            @end
           </div>
         @end
         <div class="m-auto mt-6 w-fit md:mt-8">
