@@ -1,6 +1,22 @@
 @layouts.app()
+<script>
+  console.log('script...')
+  window.onload = function () {
+  }
+
+function trocacor(id) {
+  const element = document.getElementById(id);
+
+  if (element.classList.contains('text-red-500')) {
+    element.classList.remove('text-red-500');
+  } else {
+    element.classList.add('text-red-500');
+  }
+}
+
+</script>
   <main>
-    <div>
+    <div id="teste">
       <div>Produtos
         @!svg('heroicons:arrow-left-solid', { class: 'w-6 h-6 text-red-500' })
       </div>
@@ -9,4 +25,8 @@
       </ul>
     </div>
   </main>
+
+  <button onclick="trocacor('heart')">
+    @!svg('heroicons:heart', { id: 'heart', class: 'h-10 w-10 sm:h-20 sm:w-20' })
+  </button>
 @end
