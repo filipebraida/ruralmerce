@@ -1,20 +1,4 @@
 @layouts.app()
-<script>
-  console.log('script...')
-  window.onload = function () {
-  }
-
-function trocacor(id) {
-  const element = document.getElementById(id);
-
-  if (element.classList.contains('text-red-500')) {
-    element.classList.remove('text-red-500');
-  } else {
-    element.classList.add('text-red-500');
-  }
-}
-
-</script>
   <main>
     <div id="teste">
       <div>Produtos
@@ -26,7 +10,19 @@ function trocacor(id) {
     </div>
   </main>
 
-  <button onclick="trocacor('heart')">
-    @!svg('heroicons:heart', { id: 'heart', class: 'h-10 w-10 sm:h-20 sm:w-20' })
-  </button>
+  <div x-data="{
+      like: false,
+      changeState() {
+        this.like = !this.like
+      },
+    }">
+    <button @click="changeState()">
+        @!svg('heroicons:heart', {
+          id: 'heart',
+          class: 'h-10 w-10 sm:h-20 sm:w-20',
+          ":class": `like ? 'text-red-500' : ''`
+        })
+      </span>
+    </button>
+  </div>
 @end
